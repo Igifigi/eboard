@@ -34,7 +34,8 @@ def document_create(request):
                         document=document,
                         signee=signee,
                         position=int(position),
-                        signed=already_signed
+                        signed=already_signed,
+                        signed_file=document.filename,
                     )
                     i += 1
             send_next_invite(document)
