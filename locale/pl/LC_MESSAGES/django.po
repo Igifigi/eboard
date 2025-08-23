@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-23 15:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: signatures/forms.py:13 signatures/templates/document_form.html:21
+msgid "Document name"
+msgstr "Nazwa dokumentu"
+
+#: signatures/forms.py:14 signatures/templates/document_form.html:26
+msgid "File"
+msgstr "Plik"
+
+#: signatures/forms.py:15 signatures/templates/document_form.html:31
+#: signatures/templates/emails/all_signed.html:163
+#: signatures/templates/emails/invitation.html:163 temp/all.html:163
+msgid "Comment"
+msgstr "Komentarz"
+
+#: signatures/forms.py:37
+#, python-brace-format
+msgid ""
+"Signee {pk} cannot be marked as 'already signed' without being included."
+msgstr ""
+"Osoba nr {pk} nie może zostać oznaczona jako 'już podpisana' bez zaznaczenia "
+"jej jako podpisujacej."
+
+#: signatures/forms.py:42
+#, python-brace-format
+msgid "Positions must be consecutive from 1 to {max_pos}."
+msgstr "Pozycje muszą być następujące po sobie od 1 do {max_pos}."
+
+#: signatures/forms.py:44
+msgid "Positions must be spcified for all or for none."
+msgstr "Kolejność musi być określona dla wszystkich bądź dla nikogo."
+
+#: signatures/forms.py:46
+msgid "You need to add at least one signee that didn't sign the document yet."
+msgstr ""
+"Należy zaznaczyć co najmniej jedną osobę, która jeszcze nie podpisała "
+"dokumentu."
+
+#: signatures/models.py:10
+msgid "Pending"
+msgstr "Oczekujący"
+
+#: signatures/models.py:11
+msgid "Signed"
+msgstr "Podpisany"
+
+#: signatures/models.py:12
+msgid "Archived"
+msgstr "Zarchiwizowany"
+
+#: signatures/models.py:27
+#, python-brace-format
+msgid "Document no. {number} - {name}"
+msgstr "Dokument nr {number} - {name}"
+
+#: signatures/models.py:54
+#, python-brace-format
+msgid "{document}: {signee} (pos {position})"
+msgstr "{document}: {signee} (poz. {position})"
+
+#: signatures/templates/add_signee.html:7
+msgid "Add signee"
+msgstr "Dodaj osobę"
+
+#: signatures/templates/add_signee.html:22
+msgid "Signee name, surname"
+msgstr "Imię i nazwisko osoby"
+
+#: signatures/templates/add_signee.html:26
+msgid "E-mail"
+msgstr "E-mail"
+
+#: signatures/templates/add_signee.html:30
+msgid "Add"
+msgstr "Dodaj"
+
+#: signatures/templates/add_signee.html:33
+msgid "You can also add signess by uploading a csv file in the command line."
+msgstr "Możesz również dodać osoby poprzez wgranie pliku csv w terminalu."
+
+#: signatures/templates/document_form.html:6 templates/base.html:55
+msgid "Add document"
+msgstr "Dodaj dokument"
+
+#: signatures/templates/document_form.html:36
+msgid "Signee list"
+msgstr "Lista osób"
+
+#: signatures/templates/document_form.html:40
+msgid "Name, surname"
+msgstr "Imię i nazwisko"
+
+#: signatures/templates/document_form.html:41
+msgid "Has to sign?"
+msgstr "Musi podpisać?"
+
+#: signatures/templates/document_form.html:42
+msgid "Already signed?"
+msgstr "Już podpisane?"
+
+#: signatures/templates/document_form.html:43
+msgid "Position"
+msgstr "Kolejność"
+
+#: signatures/templates/document_form.html:57
+msgid "Can't find a signee?"
+msgstr "Nie możesz znaleźć na liście?"
+
+#: signatures/templates/document_form.html:57
+msgid "Add new signee."
+msgstr "Dodaj nową osobę."
+
+#: signatures/templates/document_form.html:59
+#: signatures/templates/sign_document.html:26
+msgid "Save"
+msgstr "Zapisz"
+
+#: signatures/templates/document_list.html:6
+msgid "List of documents"
+msgstr "Lista dokumentów"
+
+#: signatures/templates/document_list.html:8
+msgid "Add a document"
+msgstr "Dodaj dokument"
+
+#: signatures/templates/document_list.html:16
+#: signatures/templates/emails/all_signed.html:163
+#: signatures/templates/emails/invitation.html:163 temp/all.html:163
+msgid "Name"
+msgstr "Nazwa"
+
+#: signatures/templates/document_list.html:17
+msgid "Status"
+msgstr "Status"
+
+#: signatures/templates/document_list.html:18
+msgid "Uploaded at"
+msgstr "Przesłany"
+
+#: signatures/templates/document_list.html:19
+msgid "Actions"
+msgstr "Akcje"
+
+#: signatures/templates/document_list.html:30
+msgid "View"
+msgstr "Szczegóły"
+
+#: signatures/templates/document_list.html:37
+msgid "There are no documents yet."
+msgstr "Brak dokumentów."
+
+#: signatures/templates/emails/all_signed.html:159
+#: signatures/templates/emails/invitation.html:159 temp/all.html:159
+msgid "Hi!"
+msgstr "Cześć!"
+
+#: signatures/templates/emails/all_signed.html:159 temp/all.html:159
+msgid "The document has been signed by all parties."
+msgstr "Dokument został podpisany przez wszystkie osoby."
+
+#: signatures/templates/emails/all_signed.html:169
+#: signatures/templates/emails/invitation.html:171 temp/all.html:169
+msgid "Document number"
+msgstr "Dokument nr"
+
+#: signatures/templates/emails/all_signed.html:169
+#: signatures/templates/emails/invitation.html:171 temp/all.html:169
+msgid "uploaded by"
+msgstr "przesłany przez"
+
+#: signatures/templates/emails/invitation.html:159
+msgid "You're asked to sign this document."
+msgstr "Jesteś proszony o podpisanie dokumentu."
+
+#: signatures/templates/emails/invitation.html:159
+msgid ""
+"The document is attached. Please download, sign, and upload it to the "
+"website using the button below."
+msgstr ""
+"Dokument znajduje się w załączniku. Prosimy go pobrać, podpisać i przesłać "
+"na stronę używając przycisku poniżej."
+
+#: signatures/templates/emails/invitation.html:167
+msgid "Upload document"
+msgstr "Prześlij dokument"
+
+#: signatures/templates/sign_document.html:6
+msgid "Upload signed document"
+msgstr "Załącz podpisany dokument"
+
+#: signatures/templates/sign_document.html:21
+msgid "Attach document:"
+msgstr "Załącz dokument:"
+
+#: signatures/templates/sign_document.html:24
+msgid "Make sure to upload the signed version of the file."
+msgstr "Upewnij się, że przesyłasz podpisany plik."
+
+#: signatures/utils.py:17 signatures/utils.py:47
+msgid "none"
+msgstr "brak"
+
+#: signatures/utils.py:25
+#, python-brace-format
+msgid "Request to sign the document {name}"
+msgstr "Prośba o podpis dokumentu {name}"
+
+#: signatures/utils.py:37
+msgid "Couldn't find attachment."
+msgstr "Nie znalezniono załączników."
+
+#: signatures/utils.py:53
+#, python-brace-format
+msgid "Document {name} was signed"
+msgstr "Dokument {name} został podpisany"
+
+#: signatures/views.py:47
+msgid "Document has been saved and the first invite was sent."
+msgstr "Dokument został zapisany i pierwsze zaproszenie zostało wysłane"
+
+#: signatures/views.py:64
+msgid "New signee added."
+msgstr "Nowa osoba została dodana."
+
+#: signatures/views.py:74
+msgid "You've already signed this document."
+msgstr "Już podpisałeś/aś ten dokument."
+
+#: signatures/views.py:87
+msgid "Thank you for the signature."
+msgstr "Dziękujemy za podpis."
+
+#: templates/base.html:43
+msgid "E-board"
+msgstr "E-zarząd"
+
+#: templates/base.html:44
+msgid "Toggle menu"
+msgstr "Załącz menu"
+
+#: templates/base.html:52
+msgid "Electronic signatures"
+msgstr "Podpisy elektroniczne"
+
+#: templates/base.html:56
+msgid "List documents"
+msgstr "Lista dokumentów"
+
+#: templates/base.html:61
+msgid "Invoices and returns"
+msgstr "Faktury i zwroty"
+
+#: templates/base.html:64
+msgid "Submit a refund request"
+msgstr "Złóż wniosek o zwrot"
+
+#: templates/base.html:69
+msgid "Return to the company main webpage"
+msgstr "Wróć na główną stronę firmy"
+
+#: templates/base.html:75
+msgid "Log out"
+msgstr "Wyloguj się"
+
+#: templates/base.html:78 templates/registration/login.html:9
+#: templates/registration/login.html:26
+msgid "Log in"
+msgstr "Zaloguj się"
+
+#: templates/error.html:6
+msgid "HTTP 404"
+msgstr "HTTP 404"
+
+#: templates/error.html:7
+msgid "Unfortunately, there's nothing here."
+msgstr "Niestety tutaj nic nie ma."
+
+#: templates/error.html:8
+msgid "You can return to the"
+msgstr "Możesz powrócić"
+
+#: templates/error.html:8
+msgid "home page"
+msgstr "stronę główną"
+
+#: templates/home.html:9
+msgid "Homepage"
+msgstr "Strona główna"
+
+#: templates/home.html:48
+msgid "Company logo"
+msgstr "Logo firmy"
+
+#: templates/registration/login.html:12
+msgid "Your username and password didn't match. Please try again."
+msgstr "Nazwa użytkownika i hasło do siebie nie pasują. Spróbuj ponownie."
+
+#: templates/registration/login.html:16
+msgid "Username"
+msgstr "Nazwa użytkownika"
+
+#: templates/registration/login.html:21
+msgid "Password"
+msgstr "Hasło"
+
+#, python-brace-format
+#~ msgid "All parties have signed the document no. {number} ({name})."
+#~ msgstr "Wszyscy już podpisali dokument numer {number} ({name})."
+
+#~ msgid "Send signed file"
+#~ msgstr "Wyślij podpisany plik"

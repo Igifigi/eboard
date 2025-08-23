@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">{% trans "Upload signed document" %}</h1>
+    <form method="post" enctype="multipart/form-data" class="p-4 bg-light rounded shadow-sm">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.name }}</strong>: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            </ul>   
+        </div>
+        {% endif %}
+        <div class="mb-3">
+            <h4 for="id_signed_file" class="form-label">{% trans "Attach document:" %} {{ sig.document.name }}</h4>
+            <input type="file" name="signed_file" id="id_signed_file" class="form-control"  required>
+        </div>
+        <p>{% trans "Make sure to upload the signed version of the file." %}</p>
+        <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

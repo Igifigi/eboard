@@ -1,0 +1,48 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{% trans "Homepage" %}
+{% endblock title %}
+
+{% autoescape on %}
+{% block content %}
+<div>
+    <h1>Witaj na stronie <b>e-zarząd</b> PWD Events!</h1>
+    <h5>Tutaj łatwo i szybko załatwisz wiele spraw związanych ze spółką, takich jak podpiszesz elektronicznie umowę czy złożysz wniosek o zwrot poniesionych kosztów. Wybierz opcję z menu u góry strony lub skorzystać z "Szybkich opcji" poniżej.</h5>
+    <br>
+</div>
+<div class="row align-items-center">
+<div class="col-md-6 mb-4">
+    <h3 class="mb-3">Szybkie opcje</h3>
+    <div class="list-group">
+        <a href="{% url "document_create" %}" class="list-group-item list-group-item-action">
+            ➕ Dodaj dokument do podpisu
+        </a>
+        <a href="{% url "document_list" %}" class="list-group-item list-group-item-action">
+            📄 Przejrzyj podpisane dokumenty
+        </a>
+        <a href="{% url "error" %}" class="list-group-item list-group-item-action">
+            💰 Złóż wniosek o zwrot kosztów
+        </a>
+        <a href="{% url "error" %}" class="list-group-item list-group-item-action">
+            📊 Podgląd raportów finansowych
+        </a>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="list-group-item list-group-item-action">⚙️ Wyloguj się</button>
+            </form>
+        {% else %}
+            <a href="{% url "login" %}" class="list-group-item list-group-item-action">✅ Zaloguj się</a>
+        {% endif %}
+        </a>
+    </div>
+</div>
+<div class="col-md-6 text-center">
+    <img src="{% static "logo.svg" %}" alt="{% trans "Company logo" %}" class="img-fluid rounded" width="50%" height="50%">
+</div>
+{% endblock content %}
+
+{% endautoescape %}

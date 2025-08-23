@@ -1,0 +1,10 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mb-4">{% trans "HTTP 404" %}</h1>
+    <p>{% trans "Unfortunately, there's nothing here." %}</p>
+    <p>{% trans "You can return to the" %} <a href="{% url "home" %}">{% trans "home page" %}.</a></li></p>
+</div>
+{% endblock content %}

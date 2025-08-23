@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+    <form method="post" class="w-100" style="max-width: 400px; padding: 2rem; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+        {% csrf_token %}
+        <h2 class="text-center mb-4">{% trans "Log in" %}</h2>
+        {% if form.errors %}
+	<p>
+		{% trans "Your username and password didn't match. Please try again." %}
+	</p>
+	{% endif %}
+        <div class="mb-3">
+            <label for="id_username" class="form-label">{% trans "Username" %}</label>
+            <input type="text" name="username" id="id_username" class="form-control" required autofocus>
+        </div>
+        <div class="mb-3">
+            <label for="id_password" class="form-label">{% trans "Password" %}</label>
+            <input type="password" name="password" id="id_password" class="form-control" required>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

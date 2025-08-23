@@ -1,0 +1,108 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{% get_current_language as lang %}{{ lang }}">
+<head>
+    <title>{% block title %}E-board{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <style>
+        .bg-grey {
+            background-color: rgba(0, 0, 0, 0.3) !important;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        @media (min-width: 992px) {
+            .navbar .dropdown:hover .dropdown-menu {
+                display: block;
+                margin-top: 0;
+            }
+        }
+        {% block style %}
+        {% endblock style %}
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cae7fcff;">
+            <a class="navbar-brand" href="{% url "home" %}">{% trans "E-board" %}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="{% trans "Toggle menu" %}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url "document_list" %}" id="signaturesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans "Electronic signatures" %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="signaturesDropdown">
+                            <li><a class="dropdown-item" href="{% url "document_create" %}">{% trans "Add document" %}</a></li>
+                            <li><a class="dropdown-item" href="{% url "document_list" %}">{% trans "List documents" %}</a></li>
+                        </ul>
+                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url "finance" %}" id="financeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans "Invoices and returns" %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="financeDropdown">
+                            <li><a class="dropdown-item" href="{% url "error" %}">{% trans "Submit a refund request" %}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex p-100">
+                    <a class="nav-link" href="{% url "company_mainpage" %}">{% trans "Return to the company main webpage" %}</a>
+                </div>
+                <div class="d-flex">
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">{% trans "Log out" %}</button>
+                    </form>
+                    {% else %}
+                    <a href="{% url "login" %}" class="btn btn-primary">{% trans "Log in" %}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+        <div class="container-fluid p-5 flex-grow-1">
+            {% if messages %}
+            <div class="container mb-3">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PWD E-BOARD (Made with 💖 by ŚWIDER 3000)
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    {% block script %}
+
+    {% endblock script %}
+</body>
+</html>

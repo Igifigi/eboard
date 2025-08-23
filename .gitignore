@@ -1,0 +1,31 @@
+# CACHE
+*.py[cod]
+__pycache__
+./__pycache__
+
+# DATABASE
+*.sqlite3
+
+# KDE Dolphin cache files
+.directory
+
+# VIRTUAL ENVIRONMENTS
+/env
+env
+/venv
+venv
+
+# STATIC, CACHE AND TEMPORARY FILES
+staticfiles
+mediafiles
+media
+tmp
+temp
+uploads
+.vscode
+
+# TODO FILES
+TODO.*
+
+# CUSTOMIZED SETTINGS
+localsettings.py

@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">{% trans "Add document" %}</h1>
+    <form method="post" enctype="multipart/form-data" class="p-4 bg-light rounded shadow-sm">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>    
+        </div>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="id_name" class="form-label">{% trans "Document name" %}</label>
+            <input type="text" name="name" id="id_name" class="form-control" maxlength="250" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_filename" class="form-label">{% trans "File" %}</label>
+            <input type="file" name="filename" id="id_filename" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_comment" class="form-label">{% trans "Comment" %}</label>
+            <textarea name="comment" id="id_comment" class="form-control" maxlength="500" rows="4"></textarea>
+        </div>
+
+        <h3 class="mt-4 mb-3">{% trans "Signee list" %}</h3>
+        <div class="table-responsive">
+            <table border="1" cellpadding="5" class="table table-bordered">
+                <thead class="table-light">
+                    <th style="width:55%;" class="align-middle">{% trans "Name, surname" %}</th>
+                    <th style="width:15%;" class="text-center align-middle">{% trans "Has to sign?" %}</th>
+                    <th style="width:15%;" class="text-center align-middle">{% trans "Already signed?" %}</th>
+                    <th style="width:15%;" class="text-center align-middle">{% trans "Position" %}</th>
+                </thead>
+                <tbody>
+                    {% for signee in signees %}
+                    <tr>
+                        <td class="align-middle">{{ signee.name }}<br><small class="text-muted">{{ signee.email }}</small></td>
+                        <td class="text-center align-middle"><input type="checkbox" name="include_{{ signee.pk }}"></td>
+                        <td class="text-center align-middle"><input type="checkbox" name="signed_{{ signee.pk }}"></td>
+                        <td class="text-center align-middle"><input type="number" name="position_{{ signee.pk }}" min="1" style="width:80px;"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p>{% trans "Can't find a signee?" %} <a href="{% url 'add_signee' %}" target="_blank" rel="noopener noreferrer">{% trans "Add new signee." %}</a></p>
+        <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("td input[type='checkbox']").forEach(function (checkbox) {
+        let td = checkbox.closest("td");
+        td.addEventListener("click", function (e) {
+            if (e.target !== checkbox) {
+                checkbox.checked = !checkbox.checked;
+            }
+        });
+    });
+});
+</script>
+{% endblock script %}
