@@ -4,7 +4,9 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.utils import timezone
+from django.utils.text import slugify
 from django.utils.translation import gettext as _
+import os
 
 
 def send_next_invite(document):
@@ -58,3 +60,8 @@ def send_final_mail(document):
         to=[settings.EMAIL_ADMIN],
     )
     email.content_subtype = 'html'
+
+def slugify_filename(filename: str, document_name: str, signed=False) -> str:
+    extension = os.path.splitext(filename)[1]
+    base = (slugify(document_name) or 'doc') if not signed else (f'{slugify(document_name)}_signed' or 'doc-signed')
+    return f'{base}{extension}'

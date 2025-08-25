@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Count
 from django.utils.translation import gettext as _
+from django.http import FileResponse
 from .models import Document, Signee, Signature
 from .forms import DocumentForm, SignatureUploadForm, SigneeForm
-from .utils import send_next_invite, send_final_mail
+from .utils import send_next_invite, send_final_mail, slugify_filename
 
 
 @login_required
@@ -75,6 +76,7 @@ def sign_document(request, token):
             signature.mark_signed(file=form.cleaned_data['signed_file'])
             if signature.document.all_signed():
                 signature.document.status = 'signed'
+                signature.document.filename = signature.signed_file # type: ignore
                 signature.document.save()
                 send_final_mail(signature.document)
             else:
@@ -84,3 +86,9 @@ def sign_document(request, token):
     else:
         form = SignatureUploadForm()
     return render(request, 'sign_document.html', {'form': form, 'sig': signature})
+
+@login_required
+def download_document(request, pk):
+    document = get_object_or_404(Document, pk=pk)
+    response = FileResponse(document.filename, as_attachment=True, filename=slugify_filename(document.filename.name, document.name, signed=True))
+    return response

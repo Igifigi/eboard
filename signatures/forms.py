@@ -4,6 +4,7 @@ from django import forms
 from django.utils.translation import gettext as _
 from django.utils.text import slugify
 from .models import Document, Signee
+from .utils import slugify_filename
 
 
 class DocumentForm(forms.ModelForm):
@@ -54,9 +55,7 @@ class DocumentForm(forms.ModelForm):
         instance = super().save(commit=False)
         file = self.cleaned_data.get('filename')
         if file:
-            extension = os.path.splitext(file.name)[1]
-            base = slugify(instance.name) or 'doc'
-            file.name = f'{base}{extension}'
+            file.name = slugify_filename(file.name, instance.name)
             instance.filename = file
         if commit:
             instance.save()

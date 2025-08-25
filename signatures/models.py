@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import gettext as _
 import uuid
+from .utils import slugify_filename
 
 STATUS_CHOICES = [
     ('pending', _('Pending')),
@@ -58,5 +59,5 @@ class Signature(models.Model):
         self.signed = True
         self.signed_at = timezone.now()
         if file:
-            self.signed_file.save(f'doc{self.document.pk}_signee{self.signee.pk}_{file.name}', file)
+            self.signed_file.save(f'doc{self.document.pk}_signee{self.signee.pk}_{slugify_filename(file.name, self.document.name)}', file)
         self.save()
